@@ -21,7 +21,7 @@ const AlbumCard = ({ album, handleEditClick, handleDeleteClick }) => {
     return (
         <>
             <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='hover:scale-105 duration-200 cursor-pointer  rounded-md'>
-                <div style={{backgroundImage:`url(./src/assets/images/img${album.imageId}.png)`, backgroundSize: 'cover'}} className={`py-0 flex flex-col justify-between items-center w-[70vw] sm:w-[260px] h-[70vw] sm:h-[260px] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.4)]`}>
+                <div style={{backgroundImage:`url(./public/images/img${album.imageId}.png)`, backgroundSize: 'cover'}} className={`py-0 flex flex-col justify-between items-center w-[70vw] sm:w-[260px] h-[70vw] sm:h-[260px] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.4)]`}>
                     <div className='w-full pr-3 py-3'>
                         <div className='rounded-full w-10 h-10 bg-white/70 float-right flex justify-center items-center'>
                             <h2 className=' '>{album.id}</h2>

@@ -58,7 +58,7 @@ const EditModal = ({ albumToEdit, albumsUserIdWise, setAlbumsUserIdWise, setEdit
                     <div className='w-full'><FaXmark onClick={() => setEditModal(false)} className='mb-1 text-white float-right text-lg cursor-pointer hover:text-green-400' /></div>
                     <div className='rounded-lg bg-white/80 flex p-8 gap-4 w-full flex-col sm:flex-row max-h-[80vh]'>
                         <div className='select-none flex-[1] max-h-[40%] aspect-square rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden'>
-                            <img className='w-full h-full object-cover' src={`./src/assets/images/img${albumToEdit.imageId}.png`} alt="" />
+                            <img className='w-full h-full object-cover' src={`./public/images/img${albumToEdit.imageId}.png`} alt="" />
                         </div>
                         <div className='flex flex-col flex-[1] w-full select-none'>
                             <label htmlFor="albumId" className='mb-0'>Enter Album Id</label>
