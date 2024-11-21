@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-const AlbumCard = ({ album, showEditModal, showDeleteModal }) => {
+const AlbumCard = ({ album, handleEditClick, handleDeleteClick }) => {
 
     const cardTextRef = useRef();
 
@@ -20,8 +20,8 @@ const AlbumCard = ({ album, showEditModal, showDeleteModal }) => {
 
     return (
         <>
-            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='w-full hover:scale-105 duration-200 cursor-pointer  rounded-md'>
-                <div style={{backgroundImage:`url(./src/assets/images/img${randomNumberInRange(1,20)}.png)`, backgroundSize: 'cover'}} className={`py-0 flex flex-col justify-between items-center w-[70vw] sm:w-[260px] h-[70vw] sm:h-[260px] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
+            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='hover:scale-105 duration-200 cursor-pointer  rounded-md'>
+                <div style={{backgroundImage:`url(./src/assets/images/img${album.imageId}.png)`, backgroundSize: 'cover'}} className={`py-0 flex flex-col justify-between items-center w-[70vw] sm:w-[260px] h-[70vw] sm:h-[260px] rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.4)]`}>
                     <div className='w-full pr-3 py-3'>
                         <div className='rounded-full w-10 h-10 bg-white/70 float-right flex justify-center items-center'>
                             <h2 className=' '>{album.id}</h2>
@@ -30,9 +30,9 @@ const AlbumCard = ({ album, showEditModal, showDeleteModal }) => {
                     <div ref={cardTextRef} className='text-center w-full py-6 bg-black/10'> 
                         <h2 className='text-white text-lg italic font-semibold'>{album.title}</h2>
                     </div>
-                    <div className='flex justify-end gap-4 w-full bg-gradient-to-l from-white/80 to-white/0 p-2'>
-                        <button onClick={() => showEditModal(album)} className='p-1 px-2 text-sm bg-blue-600 border-none hover:bg-blue-700 text-white rounded-md cursor-pointer'>Edit</button>
-                        <button onClick={() => showDeleteModal(album)} className='p-1 px-2 text-sm bg-red-500 border-none hover:bg-red-600 text-white rounded-md cursor-pointer'>Delete</button>
+                    <div className='flex justify-end gap-4 w-full bg-gradient-to-l from-white/80 to-white/0 p-2 rounded-md'>
+                        <button onClick={() => handleEditClick(album)} className='p-1 px-2 text-sm bg-blue-600 border-none hover:bg-blue-700 text-white rounded-md cursor-pointer'>Edit</button>
+                        <button onClick={() => handleDeleteClick(album)} className='p-1 px-2 text-sm bg-red-500 border-none hover:bg-red-600 text-white rounded-md cursor-pointer'>Delete</button>
                     </div>
                 </div>
             </div>
