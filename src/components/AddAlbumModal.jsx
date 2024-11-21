@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { FaXmark } from "react-icons/fa6";
 import toast from 'react-hot-toast';
+import axios from 'axios'
 
 const AddAlbumModal = ({ userId, albumsUserIdWise, setAlbumsUserIdWise, setAddAlbumModal }) => {
 
     const [newValue, setNewValue] = useState({ id: '', title: '', userId: userId, imageId: (Math.floor(Math.random() * 20) + 1) })
+
+    const api_url = "https://jsonplaceholder.typicode.com/albums"
+    const options = { headers: { accept: "application/json" } };
 
     const isIdAlreadyExist = (id) => {
         let result = false;
 
         Object.entries(albumsUserIdWise).map(([key, value]) => {
             value.map((album) => {
-                console.log(album)
                 if (album.id === Number(id))
                     result = true;
             })
@@ -29,11 +32,21 @@ const AddAlbumModal = ({ userId, albumsUserIdWise, setAlbumsUserIdWise, setAddAl
             if (isIdAlreadyExist(newValue.id)) {
                 toast.error("Id already exist")
             } else {
-                let newAlbumList = albumsUserIdWise;
-                newAlbumList[userId].unshift(newValue);
-                setAlbumsUserIdWise(newAlbumList)
-                setAddAlbumModal(false)
-                toast.success("Album added successfully")
+                try {
+                    axios.post(api_url, newValue, options)
+                        .then((response) => {
+                            if (response.status === 201) {
+                                let newAlbumList = albumsUserIdWise;
+                                newAlbumList[userId].unshift(newValue);
+                                setAlbumsUserIdWise(newAlbumList)
+                                setAddAlbumModal(false)
+                                toast.success("Album added successfully")
+                            }
+                        })
+                } catch (error) {
+                    console.log(error.message)
+                }
+
             }
         }
 

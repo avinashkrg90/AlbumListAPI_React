@@ -9,13 +9,13 @@ const AlbumCard = ({ album, handleEditClick, handleDeleteClick }) => {
     };
 
     const handleMouseEnter = () => {
-        console.log(cardTextRef.current.classList.add('bg-black/50'))
-        console.log(cardTextRef.current.classList.remove('bg-black/10'))
+        cardTextRef.current.classList.add('bg-black/50')
+        cardTextRef.current.classList.remove('bg-black/10')
     }
 
     const handleMouseLeave = () => {
-        console.log(cardTextRef.current.classList.remove('bg-black/50'))
-        console.log(cardTextRef.current.classList.add('bg-black/10'))
+        cardTextRef.current.classList.remove('bg-black/50')
+        cardTextRef.current.classList.add('bg-black/10')
     }
 
     return (

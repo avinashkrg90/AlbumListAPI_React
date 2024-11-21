@@ -35,7 +35,6 @@ const Home = () => {
     const handleDeleteClick = (album) => {
         setDeleteModal(true)
         setAlbumToDelete(album)
-        console.log("in showdete modal")
     }
 
     const handlePlusClick = (key) => {

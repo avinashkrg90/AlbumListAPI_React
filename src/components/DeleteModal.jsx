@@ -1,17 +1,29 @@
 import React from 'react'
 import { FaXmark } from "react-icons/fa6";
 import toast from 'react-hot-toast';
+import axios from 'axios'
 
 const DeleteModal = ({ albumToDelete, albumsUserIdWise, setAlbumsUserIdWise, setDeleteModal }) => {
 
-    const handleDeleteClick = () => {
-        const index = albumsUserIdWise[albumToDelete.userId].indexOf(albumToDelete);
-        let newAlbumList = albumsUserIdWise;
-        newAlbumList[albumToDelete.userId].splice(index, 1);
-        setAlbumsUserIdWise(newAlbumList)
+    const api_url = "https://jsonplaceholder.typicode.com/albums"
 
-        setDeleteModal(false)
-        toast.success("Album deleted successfully")
+    const handleDeleteClick = () => {
+        try {
+            axios.delete(api_url + '/' + albumToDelete.id)
+                .then((response) => {
+                    if (response.status === 200) {
+                        const index = albumsUserIdWise[albumToDelete.userId].indexOf(albumToDelete);
+                        let newAlbumList = albumsUserIdWise;
+                        newAlbumList[albumToDelete.userId].splice(index, 1);
+                        setAlbumsUserIdWise(newAlbumList)
+
+                        setDeleteModal(false)
+                        toast.success("Album deleted successfully")
+                    }
+                })
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
     return (

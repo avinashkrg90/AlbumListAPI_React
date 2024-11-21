@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { FaXmark } from "react-icons/fa6";
 import toast from 'react-hot-toast';
+import axios from 'axios'
 
 const EditModal = ({ albumToEdit, albumsUserIdWise, setAlbumsUserIdWise, setEditModal }) => {
     const [editValue, setEditValue] = useState({ id: albumToEdit.id, title: albumToEdit.title, userId: albumToEdit.userId, imageId: albumToEdit.imageId })
+
+    const api_url = "https://jsonplaceholder.typicode.com/albums"
 
     const isIdAlreadyExist = (id) => {
         let result = false;
         if (id !== Number(albumToEdit.id)) {
             Object.entries(albumsUserIdWise).map(([key, value]) => {
                 value.map((album) => {
-                    console.log(album)
                     if (album.id === Number(id))
                         result = true;
                 })
@@ -27,15 +29,24 @@ const EditModal = ({ albumToEdit, albumsUserIdWise, setAlbumsUserIdWise, setEdit
         } else {
             if (isIdAlreadyExist(Number(editValue.id))) {
                 toast.error("Id already exist")
-            } else {
-                const index = albumsUserIdWise[albumToEdit.userId].indexOf(albumToEdit);
-                let newAlbumList = albumsUserIdWise;
+            }
+            else {
+                try {
+                    axios.put(api_url + '/'+ albumToEdit.id, editValue)
+                        .then((response) => {
+                            if (response.status === 200) {
+                                const index = albumsUserIdWise[albumToEdit.userId].indexOf(albumToEdit);
+                                let newAlbumList = albumsUserIdWise;
 
-                newAlbumList[albumToEdit.userId].splice(index, 1, editValue);
-                // newAlbumList[albumToEdit.userId].push(editValue);
-                setAlbumsUserIdWise(newAlbumList)
-                setEditModal(false)
-                toast.success("Album updated successfully")
+                                newAlbumList[albumToEdit.userId].splice(index, 1, editValue);
+                                setAlbumsUserIdWise(newAlbumList)
+                                setEditModal(false)
+                                toast.success("Album updated successfully")
+                            }
+                        })
+                } catch (error) {
+                    console.log(error.message)
+                }
             }
         }
     }
