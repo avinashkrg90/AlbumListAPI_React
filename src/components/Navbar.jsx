@@ -15,8 +15,8 @@ const Navbar = () => {
                         <FaBluesky className=' absolute rotate-45 text-lg md:text-xl text-pink-700 -top-2 right-0' />
                     </div>
                     <ul className='flex gap-3 md:gap-5'>
-                        <li className='text-black/70 text-sm md:text-md font-semibold no-underline cursor-pointer hover:text-black/90'>Load albums</li>
-                        <li className='text-black/70 text-sm md:text-md font-semibold no-underline cursor-pointer hover:text-black/90'>Know more</li>
+                        <li onClick={() => navigate('/')} className='text-black/70 text-sm md:text-md font-semibold no-underline cursor-pointer hover:text-black/90'>Albums</li>
+                        <li onClick={() => navigate('/aboutAPI')} className='text-black/70 text-sm md:text-md font-semibold no-underline cursor-pointer hover:text-black/90'>About API</li>
                     </ul>
                     
                 </div>

@@ -25,7 +25,7 @@ const EditModal = ({ albumToEdit, albumsUserIdWise, setAlbumsUserIdWise, setEdit
         } else if (!editValue.title) {
             toast.error("Title can not be empty")
         } else {
-            if (isIdAlreadyExist(editValue.id)) {
+            if (isIdAlreadyExist(Number(editValue.id))) {
                 toast.error("Id already exist")
             } else {
                 const index = albumsUserIdWise[albumToEdit.userId].indexOf(albumToEdit);
