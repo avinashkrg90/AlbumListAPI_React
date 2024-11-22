@@ -2,6 +2,7 @@ import React from 'react'
 import { FaXmark } from "react-icons/fa6";
 import toast from 'react-hot-toast';
 import axios from 'axios'
+import imageArray from './allImages.js'
 
 const DeleteModal = ({ albumToDelete, albumsUserIdWise, setAlbumsUserIdWise, setDeleteModal }) => {
 
@@ -37,7 +38,7 @@ const DeleteModal = ({ albumToDelete, albumsUserIdWise, setAlbumsUserIdWise, set
                         </div>
                         <div className='flex gap-4'>
                             <div className=' flex-[1] max-h-[40%] aspect-square rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden'>
-                                <img className='w-full h-full object-cover' src={`./public/images/img${albumToDelete.imageId}.png`} alt="" />
+                                <img className='w-full h-full object-cover' src={`${imageArray[Number(`${albumToDelete.imageId}`)-1]}`} alt="" />
                             </div>
                             <div className='flex flex-col flex-[2] w-full select-none'>
                                 <h4 className='text-indigo-700'>Album Id: <span className='text-black'>{albumToDelete.id}</span></h4>
