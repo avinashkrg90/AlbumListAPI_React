@@ -90,7 +90,7 @@ const Home = () => {
                                             <button onClick={() => handlePlusClick(key)} className='absolute -right-32 hover:right-0 flex items-center text-gray-600 duration-300 hover:text-green-600'><FaPlus className='text-lg text-gray-600 hover mr-1' />Add new Album</button>
                                         </div>
 
-                                        <div key={key} className='p-3 pb-5 mb-8 flex w-full justify-start overflow-x-auto gap-8'>
+                                        <div key={key} className='p-3 pb-5 mb-8 flex w-full justify-start overflow-x-auto gap-5 sm:gap-8'>
                                             {albumsUserIdWise[key].map((album) => (
                                                 <AlbumCard key={album.id} album={album} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} />
                                             ))}
