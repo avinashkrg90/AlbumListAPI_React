@@ -2,6 +2,12 @@
 # Album API fetch demo project with React
 
 This project is an example to demonstrate the album API fetch from JSON Placeholder website. API need no authorization, and has no limit on number of requests made.
+
+
+## Technology used
+
+React, TailwindCSS
+
 ## Features
 
 - attracive UI with colorful random images assigned for individual album
@@ -74,8 +80,5 @@ For support, email avinashkgupta91@gmail.com
 
 
 
-## Technology used
-
-**Client:** React, TailwindCSS
 
 
